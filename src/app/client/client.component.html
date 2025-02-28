@@ -1,0 +1,164 @@
+<h3>{{title}}</h3>
+<table class="table-hover table table-borderless ">
+  <thead class="table-success">
+  <th class="text-center">id</th>
+  <th class="text-center">name</th>
+  <th class="text-center">email</th>
+  <th class="text-center">phone</th>
+  <th class="text-center">Update</th>
+  <th class="text-center">Delete</th>
+  </thead>
+  <tbody *ngIf="clients">
+  <tr *ngFor="let client of clients">
+    <td class="text-center">{{client.id}}</td>
+    <td class="text-center">{{client.name}}</td>
+    <td class="text-center">{{client.email}}</td>
+    <td class="text-center">{{client.phone}}</td>
+    <td class="text-center">
+      <button class="btn btn-outline-info " data-bs-toggle="modal" (click)="getClient(client)" data-bs-target="#myModal">
+        <i class="bi bi-building-up"></i>
+      </button>
+    </td>
+    <td class="text-center">
+      <button (click)="deleteClient(client);refresh()" class="btn btn-outline-danger">
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal2">ADD<i class="bi bi-plus"></i></button>
+<!-- popup de update -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="p-3 container">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="row">
+                <h4 class="modal-title text-center fw-bold font-monospace">New information</h4>
+                <div><hr></div>
+                <div class="col-md-6 ">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form (ngSubmit)="updateClient(upd);refresh()" #upd="ngForm">
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Name : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.name"  name="name"  >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Email : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.email"  name="email" >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label" >Phone : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.phone"  name="phone" type="number" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Update</button>
+                    </div>
+                  </form>
+                </div>
+                <div><hr></div>
+                <!-- Modal footer -->
+                <div class="d-grid">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- popup de add -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="p-3 container">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="row">
+                <h4 class="modal-title text-center fw-bold font-monospace">New Client</h4>
+                <div><hr></div>
+                <div class="container col-md-6 ">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form (ngSubmit)="postClient(add);refresh()" #add="ngForm">
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Name : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.name" name="name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Email : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.email" name="email">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Phone : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testClient.phone" name="phone" type="number">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit"  class="btn btn-outline-success" data-bs-dismiss="modal">Save</button>
+                    </div>
+                  </form>
+                </div>
+                <div><hr></div>
+                <!-- Modal footer -->
+                <div class="d-grid">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

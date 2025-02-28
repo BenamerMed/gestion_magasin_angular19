@@ -1,0 +1,163 @@
+<h3>{{title}}</h3>
+<table class="table-hover table table-borderless ">
+  <thead class="table-success">
+    <th class="text-center">id</th>
+    <th class="text-center">name</th>
+    <th class="text-center">disc</th>
+    <th class="text-center">price</th>
+    <th class="text-center">Update</th>
+    <th class="text-center">Delete</th>
+  </thead>
+  <tbody *ngIf="products">
+  <tr *ngFor="let product of products">
+    <td class="text-center">{{product.id}}</td>
+    <td class="text-center">{{product.name}}</td>
+    <td class="text-center">{{product.description}}</td>
+    <td class="text-center">{{product.price}}</td>
+    <td class="text-center">
+      <button class="btn btn-outline-info " data-bs-toggle="modal" (click)="getProduct(product)" data-bs-target="#myModal">
+        <i class="bi bi-building-up"></i>
+      </button>
+    </td>
+    <td class="text-center">
+      <button (click)="deleteProduct(product);refresh()" class="btn btn-outline-danger">
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#myModal2">ADD<i class="bi bi-plus"></i></button>
+<!-- popup de update -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="p-3 container">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="row">
+                <h4 class="modal-title text-center fw-bold font-monospace">New information</h4>
+                <div><hr></div>
+                <div class="col-md-6 ">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form (ngSubmit)="updateProduct(upd);refresh()" #upd="ngForm">
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Name : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.name"  name="name"  >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Descriprtion : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.description"  name="description" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label" >Price : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.price"  name="price" type="number" >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal">Update</button>
+                    </div>
+                  </form>
+                </div>
+                <div><hr></div>
+                <!-- Modal footer -->
+                <div class="d-grid">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- popup de add -->
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="p-3 container">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="row">
+                <h4 class="modal-title text-center fw-bold font-monospace">New Product</h4>
+                <div><hr></div>
+                <div class="container col-md-6 ">
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <form (ngSubmit)="postProduct(add);refresh()" #add="ngForm">
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Name : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.name" name="name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Description : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.description" name="description">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <div class="row">
+                        <div class="col">
+                          <label class="form-label">Price : </label>
+                        </div>
+                        <div class="col">
+                          <input class="form-control" [(ngModel)]="testProduct.price" name="price" type="number">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit"  class="btn btn-outline-success" data-bs-dismiss="modal">Save</button>
+                    </div>
+                  </form>
+                </div>
+                <div><hr></div>
+                <!-- Modal footer -->
+                <div class="d-grid">
+                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

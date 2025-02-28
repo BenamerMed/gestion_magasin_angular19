@@ -1,0 +1,30 @@
+<h3>{{title}}</h3>
+<table class="table-hover table table-borderless ">
+  <thead class="table-success">
+  <th class="text-center">id</th>
+  <th class="text-center">Client Name</th>
+  <th class="text-center">Product Name</th>
+  <th class="text-center">Date</th>
+  <th class="text-center">Update</th>
+  <th class="text-center">Delete</th>
+  </thead>
+  <tbody *ngIf="sales">
+  <tr *ngFor="let sale of sales">
+    <td class="text-center">{{sale.id}}</td>
+    <td class="text-center">{{sale.client.name}}</td>
+    <td class="text-center">{{sale.product.name}}</td>
+    <td class="text-center">{{sale.date}}</td>
+    <td class="text-center">
+      <button class="btn btn-outline-info " data-bs-toggle="modal" (click)="getSale(sale)" data-bs-target="#myModal">
+        <i class="bi bi-building-up"></i>
+      </button>
+    </td>
+    <td class="text-center">
+      <button (click)="deleteSale(sale);refresh()" class="btn btn-outline-danger">
+        <i class="bi bi-trash"></i>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

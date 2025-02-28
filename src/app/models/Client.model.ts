@@ -1,6 +1,6 @@
-export interface ClientModel {
+export interface Client {
   id:number;
-  name:string;
+  name:string; phone:number;
   email:string;
-  phone:number;
+
 }

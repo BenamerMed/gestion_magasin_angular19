@@ -1,6 +1,6 @@
-export interface ProductModel {
+export interface Product{
   id:number;
   name:string;
-  disc:string;
+  description:string;
   price:number;
 }
